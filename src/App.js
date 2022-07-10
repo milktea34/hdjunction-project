@@ -88,7 +88,8 @@ function App() {
     }
     const onDragEnd = (e) => {
         dispatch({
-            type: 'DRAGEND', value: {end: {x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY}, drawType: state.drawType}
+            type: 'DRAGEND',
+            value: {end: {x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY}, drawType: state.drawType}
         });
         dispatch({type: 'UPDATE_STORAGE'});
     }
@@ -102,7 +103,7 @@ function App() {
         dispatch({type: 'UPDATE_STORAGE'});
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const storedDraws = localStorage.getItem('draws');
         if (storedDraws !== null) {
             dispatch({type: 'LOAD_STORED_DRAWS', value: {draws: JSON.parse(storedDraws)}});
@@ -112,11 +113,11 @@ function App() {
     return (<div className="App">
         <header className="App-header">
             <div className={"buttons"}>
-                <button type={"button"} className={state.drawType === 'box'? 'selected': ''} onClick={() => {
+                <button type={"button"} className={state.drawType === 'box' ? 'selected' : ''} onClick={() => {
                     onChangeDrawType('box')
                 }}>box
                 </button>
-                <button type={"button"} className={state.drawType === 'circle'? 'selected': ''} onClick={() => {
+                <button type={"button"} className={state.drawType === 'circle' ? 'selected' : ''} onClick={() => {
                     onChangeDrawType('circle')
                 }}>circle
                 </button>
