@@ -1,70 +1,11 @@
-# Getting Started with Create React App
+# 프로젝트 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 구현환경 : node 14.17.2, npm 6.14.13
+- 실행방법 : 프로젝트 폴더 내에서 npm run start
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 필수 구현 사항은 모두 구현 완료하였습니다.(드래그해서 사각형, 원, 일괄삭제, 스토리지 저장)
+- 미구현된 기능 및 코드 개선 방향
+  1. dragstart, dragend 이벤트를 바탕이 되는 DIV에 붙이다 보니 내부 객체가 같이 드래그 되는 화면이 보이는게 아쉽습니다. 시간을 더 들였다면 drag관련 이벤트는 전체에 걸고 이벤트가 해당 DIV 영역 안에서 발생했는지 체크해서 수정하면 되지 않을까 생각합니다.
+  2. 도형을 선택하면 삭제, 맨앞으로 가져오기, 맨뒤로 보내기 버튼을 보이게 해서 처리하려고 했는데 클릭 이벤트가 두번 실행되서 상태 변경이 원하는대로 동작하지 않았습니다. 추후 수정한다면 지금 분리되어있는 boxes와 circles를 하나로 통합하고, 클릭 이벤트에서 그냥 인덱스만 받아서 처리하는 식으로 변경할수 있을 것 같습니다. 맨앞으로 보내기, 맨뒤로 보내기는 최대/최소 Z-INDEX값을 state에 저장해두고 버튼 누를때마다 해당 객체의 z-index값을 수정해주는 방식으로 구현하려고 했습니다.
+  3. 드래그로 위치 변경하는 부분도 생성된 객체 자체에 드래그 이벤트 넣어서 style의 위치 값을 조정시켜주면 될 것 같습니다. 
+  
