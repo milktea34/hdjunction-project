@@ -83,12 +83,12 @@ function App() {
     const [state, dispatch] = useReducer(reducer, initialState);
     const onDragStart = (e) => {
         dispatch({
-            type: 'DRAGSTART', value: {start: {x: e.nativeEvent.layerX, y: e.nativeEvent.layerY}}
+            type: 'DRAGSTART', value: {start: {x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY}}
         });
     }
     const onDragEnd = (e) => {
         dispatch({
-            type: 'DRAGEND', value: {end: {x: e.nativeEvent.layerX, y: e.nativeEvent.layerY}, drawType: state.drawType}
+            type: 'DRAGEND', value: {end: {x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY}, drawType: state.drawType}
         });
         dispatch({type: 'UPDATE_STORAGE'});
     }
